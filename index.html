@@ -47,59 +47,63 @@
     </div>
 
     <script>
-        let index = 0;
-        const yesResponses = [
-            { question: "Will you go on a date with me?", message: "I promise it'll be fun, and I'll try to impress you! 😉" ,gif:"yes1.gif"},
-            { question: "You said yes! So, will you be my girlfriend?", message: "Just say yes and I swear, I’ll be the happiest person ever! 💖",gif:"yes2.gif" },
-            { question: "Yay! You said YES! 💖 Now, how about we make some unforgettable memories?", message: "I'm so happy! Best decision ever, let’s make this magical. 😘" ,gif:"yes3.gif"},
-            { question: "I’m feeling so lucky to have you! How about a sweet getaway soon? 🌴", message: "I can’t wait for us to share so many special moments together. 💫",gif:"yes4.gif" },
-            { question: "How about a surprise date? You won’t know where we’re going until we get there!", message: "I’m planning something amazing, just for us. Let’s make it unforgettable. 😍",gif:"yes5.gif" },
-            { question: "Every day with you feels like magic. What do you think, should we make this official?", message: "There’s no one else I’d rather spend my time with. 💕" ,gif:"yes6.gif"}
-        ];
+      let index = 0;
+const yesResponses = [
+    { question: "Will you go on a date with me?", message: "I promise it'll be fun, and I'll try to impress you! 😉" ,gif:"yes1.gif"},
+    { question: "You said yes! So, will you be my girlfriend?", message: "Just say yes and I swear, I’ll be the happiest person ever! 💖",gif:"yes2.gif" },
+    { question: "Yay! You said YES! 💖 Now, how about we make some unforgettable memories?", message: "I'm so happy! Best decision ever, let’s make this magical. 😘" ,gif:"yes3.gif"},
+    { question: "I’m feeling so lucky to have you! How about a sweet getaway soon? 🌴", message: "I can’t wait for us to share so many special moments together. 💫",gif:"yes4.gif" },
+    { question: "How about a surprise date? You won’t know where we’re going until we get there!", message: "I’m planning something amazing, just for us. Let’s make it unforgettable. 😍",gif:"yes5.gif" },
+    { question: "Every day with you feels like magic. What do you think, should we make this official?", message: "There’s no one else I’d rather spend my time with. 💕" ,gif:"yes6.gif"}
+];
 
-        const noResponses = [
-            { question: "Aww, why not? 😔 Is it something I said?", message: "Don’t worry, I’ll win your heart one day. 🤞", },
-            { question: "Okay, maybe next time. 😢 What’s holding you back?", message: "But you still have my heart. ❤️ I’ll be here waiting!",gif:"no1.gif" },
-            { question: "Sad, but I’ll wait for you. 😔 Maybe someday you’ll say yes?", message: "No matter how long it takes, I’ll always be here, just for you. 💖",gif:"no2.gif" },
-            { question: "It’s okay, I respect your space. 💔 But just know, I’m always here for you.", message: "I’ll be patiently waiting for that moment when you’re ready. 💫" ,gif:"no3.gif"},
-            { question: "I’m not giving up! 😌 What’s it going to take to change your mind?", message: "I promise, when you do say yes, it’ll be the best decision we ever made. 💖",gif:"no4.gif" },
-            { question: "I’m heartbroken, but I’ll wait patiently. 💔 Maybe someday you’ll feel the same.", message: "Until then, I’ll be here, hoping you’ll give us a chance. 💖",gif:"no5.gif" }
-        ];
+const noResponses = [
+    { question: "Aww, why not? 😔 Is it something I said?", message: "Don’t worry, I’ll win your heart one day. 🤞", },
+    { question: "Okay, maybe next time. 😢 What’s holding you back?", message: "But you still have my heart. ❤️ I’ll be here waiting!",gif:"no1.gif" },
+    { question: "Sad, but I’ll wait for you. 😔 Maybe someday you’ll say yes?", message: "No matter how long it takes, I’ll always be here, just for you. 💖",gif:"no2.gif" },
+    { question: "It’s okay, I respect your space. 💔 But just know, I’m always here for you.", message: "I’ll be patiently waiting for that moment when you’re ready. 💫" ,gif:"no3.gif"},
+    { question: "I’m not giving up! 😌 What’s it going to take to change your mind?", message: "I promise, when you do say yes, it’ll be the best decision we ever made. 💖",gif:"no4.gif" },
+    { question: "I’m heartbroken, but I’ll wait patiently. 💔 Maybe someday you’ll feel the same.", message: "Until then, I’ll be here, hoping you’ll give us a chance. 💖",gif:"no5.gif" }
+];
 
-        let startbtn = document.getElementById("startbtn");
-        let yesclicked = document.getElementById("yesbtn");
-        let noclicked = document.getElementById("nobtn");
-
-        function updateQuestionAndMessage(responses) {
-            index++;
-            if (index < yesResponses.length) {
-   
-              const currentResponse = responses[index];
+// Preload images
+const preloadImages = (responses) => {
+    responses.forEach(response => {
         const img = new Image();
-        img.src = currentResponse.gif;
+        img.src = response.gif;
+    });
+};
 
-        img.onload = () => {
-            document.getElementById('giff').src = currentResponse.gif;
-            document.getElementById('question').innerText = currentResponse.question;
-            document.getElementById('qoute').innerText = currentResponse.message;
-        };
-            
-                
-            }
-            if (index === yesResponses.length) {
-                document.getElementById("main2").classList.toggle('hidden')
-             
-                document.getElementById("main3").classList.toggle('hidden')
-            }
-        }
+preloadImages(yesResponses);
+preloadImages(noResponses);
 
-        startbtn.addEventListener("click", () => { 
-            document.getElementById("main1").classList.toggle("hidden");
-            document.getElementById("main2").classList.toggle("hidden");
-        });
+let startbtn = document.getElementById("startbtn");
+let yesclicked = document.getElementById("yesbtn");
+let noclicked = document.getElementById("nobtn");
 
-        yesclicked.addEventListener("click", () => { updateQuestionAndMessage(yesResponses); });
-        noclicked.addEventListener("click", () => { updateQuestionAndMessage(noResponses); });
+function updateQuestionAndMessage(responses) {
+    index++;
+    if (index < yesResponses.length) {
+        const currentResponse = responses[index];
+        document.getElementById('giff').src = currentResponse.gif;
+        document.getElementById('question').innerText = currentResponse.question;
+        document.getElementById('qoute').innerText = currentResponse.message;
+    }
+
+    if (index === yesResponses.length) {
+        document.getElementById("main2").classList.toggle('hidden')
+        document.getElementById("main3").classList.toggle('hidden')
+    }
+}
+
+startbtn.addEventListener("click", () => { 
+    document.getElementById("main1").classList.toggle("hidden");
+    document.getElementById("main2").classList.toggle("hidden");
+});
+
+yesclicked.addEventListener("click", () => { updateQuestionAndMessage(yesResponses); });
+noclicked.addEventListener("click", () => { updateQuestionAndMessage(noResponses); });
+
     </script>
 </body>
 </html>
