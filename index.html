@@ -73,10 +73,16 @@
         function updateQuestionAndMessage(responses) {
             index++;
             if (index < yesResponses.length) {
-                const currentResponse = responses[index];
-                    document.getElementById('giff').src =currentResponse.gif;
-                document.getElementById('question').innerText = currentResponse.question;
-                document.getElementById('qoute').innerText = currentResponse.message;
+   
+              const currentResponse = responses[index];
+        const img = new Image();
+        img.src = currentResponse.gif;
+
+        img.onload = () => {
+            document.getElementById('giff').src = currentResponse.gif;
+            document.getElementById('question').innerText = currentResponse.question;
+            document.getElementById('qoute').innerText = currentResponse.message;
+        };
             
                 
             }
