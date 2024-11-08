@@ -74,9 +74,10 @@
             index++;
             if (index < yesResponses.length) {
                 const currentResponse = responses[index];
+                    document.getElementById('giff').src =currentResponse.gif;
                 document.getElementById('question').innerText = currentResponse.question;
                 document.getElementById('qoute').innerText = currentResponse.message;
-                document.getElementById('giff').src =currentResponse.gif;
+            
                 
             }
             if (index === yesResponses.length) {
