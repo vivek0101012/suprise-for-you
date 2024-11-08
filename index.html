@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ask you out </title>
+    <link rel="icon" href="main11.gif" type="image/gif">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-pink-100 text-pink-600 font-sans">
+
+
+
+
+
+    <div class="w-full  p-8 h-screen flex items-center justify-center">
+
+        <div class=" hidden flex flex-col justify-center bg-white p-10 rounded-3xl shadow-lg items-center space-y-4 " id="main3">
+
+<h1 class="font-extrabold text-4xl text-pink-600"> whether it’s a yes or no, you’ve made me smile today. 💕"</h1>
+<img src="last.gif" class=" h-[100px] w-[100px] md:h-[200px] md:w-[200px]" alt="">
+
+        </div>
+
+        <div id="main1" class="flex flex-col justify-center bg-white p-10 rounded-3xl shadow-lg items-center space-y-4">
+            <h1 class="font-extrabold text-4xl text-pink-600">Hello heart,lets play a game  💖</h1>
+<img src="main11.gif"  id="gifhere" class=" h-[100px]" alt="">
+
+            <button id="startbtn" class="btn w-[120px] py-3 font-bold text-xl bg-gradient-to-r from-pink-400 to-pink-600 text-white rounded-full hover:scale-105 hover:ring-2 hover:ring-pink-500 transition-all duration-300">Start</button>
+        </div>
+
+        <div id="main2" class="flex flex-col justify-center items-center bg-white p-10 rounded-3xl shadow-lg hidden space-y-6">
+            <h1 id="question" class="font-extrabold text-2xl  md:text-3xl text-center  text-pink-600">Will you go on a date with me?</h1>
+
+<img  id="giff" src="yes1.gif" class=" h-[100px] w-[100px] md:h-[200px] md:w-[200px]" alt="">
+
+            <h2 id="qoute" class="font-medium  text-center  text-lg   md:text-2xl  text-pink-500">I promise it'll be fun, and I'll try to impress you! 😉</h2>
+
+            <div id="btnsdiv" class="flex justify-center items-center space-x-4">
+                
+                <button id="yesbtn" class="btn px-4 py-2 bg-green-400 text-white rounded-full hover:scale-105 hover:ring-2 hover:ring-green-500 transition-all duration-300">Yes</button>
+                
+                <button id="nobtn" class="btn px-4 py-2 bg-red-500 text-white rounded-full hover:scale-105 hover:ring-2 hover:ring-red-500 transition-all duration-300">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let index = 0;
+        const yesResponses = [
+            { question: "Will you go on a date with me?", message: "I promise it'll be fun, and I'll try to impress you! 😉" ,gif:"yes1.gif"},
+            { question: "You said yes! So, will you be my girlfriend?", message: "Just say yes and I swear, I’ll be the happiest person ever! 💖",gif:"yes2.gif" },
+            { question: "Yay! You said YES! 💖 Now, how about we make some unforgettable memories?", message: "I'm so happy! Best decision ever, let’s make this magical. 😘" ,gif:"yes3.gif"},
+            { question: "I’m feeling so lucky to have you! How about a sweet getaway soon? 🌴", message: "I can’t wait for us to share so many special moments together. 💫",gif:"yes4.gif" },
+            { question: "How about a surprise date? You won’t know where we’re going until we get there!", message: "I’m planning something amazing, just for us. Let’s make it unforgettable. 😍",gif:"yes5.gif" },
+            { question: "Every day with you feels like magic. What do you think, should we make this official?", message: "There’s no one else I’d rather spend my time with. 💕" ,gif:"yes6.gif"}
+        ];
+
+        const noResponses = [
+            { question: "Aww, why not? 😔 Is it something I said?", message: "Don’t worry, I’ll win your heart one day. 🤞", },
+            { question: "Okay, maybe next time. 😢 What’s holding you back?", message: "But you still have my heart. ❤️ I’ll be here waiting!",gif:"no1.gif" },
+            { question: "Sad, but I’ll wait for you. 😔 Maybe someday you’ll say yes?", message: "No matter how long it takes, I’ll always be here, just for you. 💖",gif:"no2.gif" },
+            { question: "It’s okay, I respect your space. 💔 But just know, I’m always here for you.", message: "I’ll be patiently waiting for that moment when you’re ready. 💫" ,gif:"no3.gif"},
+            { question: "I’m not giving up! 😌 What’s it going to take to change your mind?", message: "I promise, when you do say yes, it’ll be the best decision we ever made. 💖",gif:"no4.gif" },
+            { question: "I’m heartbroken, but I’ll wait patiently. 💔 Maybe someday you’ll feel the same.", message: "Until then, I’ll be here, hoping you’ll give us a chance. 💖",gif:"no5.gif" }
+        ];
+
+        let startbtn = document.getElementById("startbtn");
+        let yesclicked = document.getElementById("yesbtn");
+        let noclicked = document.getElementById("nobtn");
+
+        function updateQuestionAndMessage(responses) {
+            index++;
+            if (index < yesResponses.length) {
+                const currentResponse = responses[index];
+                document.getElementById('question').innerText = currentResponse.question;
+                document.getElementById('qoute').innerText = currentResponse.message;
+                document.getElementById('giff').src =currentResponse.gif;
+                
+            }
+            if (index === yesResponses.length) {
+                document.getElementById("main2").classList.toggle('hidden')
+             
+                document.getElementById("main3").classList.toggle('hidden')
+            }
+        }
+
+        startbtn.addEventListener("click", () => { 
+            document.getElementById("main1").classList.toggle("hidden");
+            document.getElementById("main2").classList.toggle("hidden");
+        });
+
+        yesclicked.addEventListener("click", () => { updateQuestionAndMessage(yesResponses); });
+        noclicked.addEventListener("click", () => { updateQuestionAndMessage(noResponses); });
+    </script>
+</body>
+</html>
